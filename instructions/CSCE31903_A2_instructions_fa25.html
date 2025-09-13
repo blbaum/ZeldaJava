@@ -1,0 +1,440 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+	body {
+		background-color: #d8ccdb;
+	}
+
+	body,td,center {
+		font-family: verdana, tahoma, geneva, sans-serif;
+		font-size: 16px;
+	}
+
+	@media (max-width: 990px) {
+		body,td,center {
+			font-size: 16px;
+		}
+	}
+
+	p {
+		line-height: 1;
+		padding-bottom: 10px;
+	}
+
+	.noindent {
+		text-indent: 0px;
+	}
+
+	.quote {
+		color: green;
+		padding-left: 80px;
+		text-indent: 0px;
+	}
+
+	li {
+		line-height: 1;
+		padding-bottom: 5px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	.code {
+		color:#a0ffa0;
+		background-color:#000000;
+		width:800px;
+	}
+	
+	.shell {
+		margin-left: 30px;
+		color:#000000;
+		background-color:#ffffff;
+	}
+	.tab {
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background-color: #f1f1f1;
+	}
+	.tab button {
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 14px 16px;
+		transition: 0.3s;
+	}
+	.tab button:hover {
+		background-color: #ddd;
+	}
+	.tab button.active {
+		background-color: #ccc;
+	}
+	.tabcontent {
+		display: none;
+		padding: 6px 12px;
+		border: 1px solid #ccc;
+		border-top: none;
+	}
+	.tabcontentide {
+		display: none;
+		padding: 6px 12px;
+		border: 1px solid #ccc;
+		border-top: none;
+	}
+	.toc {
+		margin-left: 30px;
+	}
+
+
+	/* Style the button that is used to open and close the collapsible content */
+	.collapsible {
+		background-color: #d6cadd;
+		color: #444;
+		cursor: pointer;
+		padding: 18px;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 15px;
+	}
+
+	/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+	.active, .collapsible:hover {
+		background-color: #e8ccd7;
+	}
+
+	/* Style the collapsible content. Note: hidden by default */
+	.content {
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #d6cadd;
+	}
+</style>
+</head>
+<table align="center" cellpadding="50" border="1" bgcolor="#e8dceb" width="620"><tbody><tr><td>
+
+<h1>Assignment 2: Objects</h1>
+
+<p>In this assignment, you will build a map editor for a four-room (at least) video game.</p>
+
+<ol>
+	<li><b>Make a backup copy</b> of your previous assignment.
+		If you do not already have a habit of regularly backing up your work, develop that habit now.
+		These days, storage space is cheap. No one regrets making backups. You have been warned.
+		</li><br><br>
+	
+	<li><b>Update your game window for testing.</b>
+		Add a key press option in Controller to exit your Game window when either Q/q or esc is pressed. You may have already done this for Assignment 1!
+		<font color="red">There are two different ways to exit this program and BOTH need to be in your code. Q/q will exit the Game window AND esc will exit the Game window.</font>
+		When we are testing your code, we will expect to be able to use these keyboard shortcuts and they
+		are required! You are welcome to add more shortcuts in your code as it makes sense to you, but these the expected ones for right now.
+<pre class="code">
+System.exit(0); //will quit your program's execution.
+</pre>
+		<button type="button" class="collapsible">Hint for key presses...</button>
+		<div class="content">
+		<p>Instead of testing both uppercase and lowercase letters for each of the menu options, you could get the key char from the KeyEvent and set it toLowerCase!</p>
+		</div>
+		Also, change the title of your window to "A2 - Map Editor" (or something of your choice that indicates
+		which assignment this is and its general purpose) - this will make it easier to keep track
+		of which assignment you're currently working on in case your IDE starts running a different
+		project for you without letting you know!
+		</li><br><br>
+
+	<li><b>Make a class named "Tree"</b>.
+		Add four private integer class member variables, named "x", "y", "w", and "h", to hold the position and dimensions of the tree. Create a constructor to initialize its position. Create some getters and setters for your class member variables. You will find "tree.png" on the Blackboard site.
+		</li><br><br>
+	
+	<li><b>Load Tree image</b>.
+		In View, load the tree image similarly to how you loaded the turtle image.  Use appropriate 
+		variable names.</li><br><br>
+
+	<li><b>Clean up</b>.
+		Update your <b><font color="MediumSeaGreen">build script</font></b> to also compile your new class as well.
+		If you still have a button or a turtle in your program, <font color=red>remove those</font>! Remove any variables or methods associated with your button and with the destination of your turtle. Comment out (or remove) the other variables and methods associated with the turtle. We will want to use some of those statements as guidance in this assignment and the next, but no button code, and nothing related to destination, or dest_x or dest_y!
+		When you program, it is important to stay organized.
+		Always take time to use meaningful variable names, indent your code properly, add comments, and keep it readable.
+		These assignments build on top of each other.
+		If you make a complicated mess, you are the one who will have to deal with it later.
+		<br><br>
+		At this point, you should have a screen with some background color of your choice (likely green) with nothing shown when you run your code. Update the size of the window for a video game as appropriate.
+		<button type="button" class="collapsible">Window size</button>
+		<div class="content">
+		<p>My window is personally 700x500, but you should choose something that works well for you.</p>
+		</div>
+		</li><br><br>
+
+	<center><b><font color=red><h1>STOP!!!</h1></font></b></center>
+		Make <b>sure</b> you have actually followed the first five steps! Get rid of the turtle code, or at least comment it out so it's not running. ALL of the turtle code. You WILL be counted off if it's still in there and that's a silly way to lose points! Again, highly recommend just commenting out the Controller's update function code (not the whole function itself though, just the boolean key if statements).
+		<br><br><br><br><br><br>
+
+	<li><b>Make your Model hold an ArrayList of Trees</b>.
+		(Use your favorite search engine to search for "java ArrayList". Read about the "add", "get", and "remove" methods.  Be sure to note whether you will need an import statement!)
+		Add a member variable to Model like this:
+<pre class="code">
+private ArrayList&lt;Tree&gt; trees;
+</pre>
+		Initialize it in your Model constructor like this:
+<pre class="code">
+trees = new ArrayList&lt;Tree&gt;();
+</pre>
+		Also, let's add a Tree to the Arraylist for testing purposes:
+<pre class="code">
+Tree t = new Tree(400, 300);
+trees.add(t);
+</pre>
+		</li><br><br>
+
+	<li><b>Make your View draw all of the trees</b>.
+		Remember where the turtle was being drawn in the last assignment?  Put this, with appropriate modifications, there.
+<pre class="code">
+for(int i = 0; i &lt; /*number of trees being stores in model's ArrayList */; i++)
+{
+   Tree tree = /*get a specific tree out of the ArrayList*/;
+   g.drawImage(treeImage, tree.getX(), tree.getY(), tree.getW(), tree.getH(), null);
+}
+</pre>
+		Remember that we are encapsulating our variables, so we need to use the appropriate getters and setters to access attributes in another class!		
+		You should now have a green screen with a single tree shown.
+		</li><br><br>
+
+	<li><b>Add a tree to the grid wherever the user clicks</b>.
+		(Also, if the user clicks 5 times, there should be 5 trees on the screen, in each of the places where the user clicked.) The user should be able to add as many trees to the screen as they like.
+		(Also, get rid of that one tree that we initially put in the ArrayList.
+		That was just there so you could see if the previous step worked.)
+		In traditional 8-bit fashion, allow the user to add trees to create the map in a grid-like fashion.  If your tree is 75pixels
+		wide, you should be able to put a tree at 0, 75, 150, 225, 300, etc.  To 'snap to the grid', you'll need to remove the 'extra'
+		pixels that are left over from 150.  For instance, if the user clicks at 184, that tree should 'snap' to 150.  You can make that happen
+		with this type of code (maybe consider using static final variables for tree width and height?):
+<pre class="code">
+int x = Math.floorDiv(mousex, 75) * 75;
+</pre>
+		This code would take 184/75 = 2 (since integer division floors down for positive numbers) * 75 = 150, which is one of the 'acceptable' locations. Similarly, -184/74 = -3 (since floorDiv rounds down, not towards zero) * -75 = -225. (0-75-75-75=-225 - an 'acceptable' location)
+<button type="button" class="collapsible">MouseListener Addition</button>
+		<div class="content">
+		You could also utilize the MouseMotionListener interface and use mouseDragged() to add uniformly sized Trees, dropping Trees off on a snap-to-grid type of design. If you choose this option, then both mouse press and mouse dragged should add Trees when clicked on an empty location.</div>
+		</li><br><br>
+
+	<li><b>Add some additional functionality to Controller</b>.
+		Add a variable to control an "editMode" (use 'e' and 'E') - this should toggle back and forth allowing the user to edit their map on the fly (this will make future projects easier to work with!).<br>
+		When we are in edit mode and adding items to our map, a green box of size 100x100 should appear in the top-left corner. On top of that, display the current map item that is being drawn. For right now, this is just a tree.<br>
+		Add another variable or two to control whether we are adding new Trees (use 'a' and 'A'), or removing Trees (use 'r' and 'R'). As soon as editMode is toggled to true, we should be able to add new Trees to our map (addMapItem = true). If we toggle it to false, then we should be able to remove Trees (see below) and change the background of that top-left box to red instead.<br>
+		If the user is in editMode and presses 'c' or 'C', clear all trees that are being displayed on the screen (call a function in Model to clear everything). If not in editMode, 'c'/'C' does nothing!
+	</li><br><br>
+
+	<li><b>Add a method to detect when the user clicked on an existing Tree</b>.
+		Add a method to your Tree class that takes two parameters, the x and y position where the user clicked.
+		Return true <a href="https://en.wikipedia.org/wiki/If_and_only_if">iff</a> the user clicked on the tree.
+		Adjust your program such that when editMode=true && addMapItem=false && the user clicks on an existing tree, it is removed. (editMode=true :: there is a box in the top left corner, addMapItems=false :: the background is red, if there is a tree below the user's click, delete it)
+		</li><br><br>
+
+	<li><b>Enable the View to scroll over a larger model</b>.
+		We will, in an assignment coming soon, control a character who, when they approach the edge of the screen where there is an 
+		opening, will enter a new room.  However, since we don't have our character yet, we will 'cheat' and use key presses to switch 
+		between room views.  For now, we will use:
+		<ul><li>4 = left</li>
+			<li>6 = right</li>
+			<li>8 = up</li>
+			<li>2 = down</li></ul>
+		For this map, you need at least four 'rooms', and can scroll between them with the aforementioned keypresses.  Please see
+		below for the final requirements of your map before you turn in your project.
+		Add two private variables to the View class to store room position - if you create four rooms in a square pattern, one will be at (0,0),
+		(700,0), (0,500), and (700,500), assuming your window is 700x500.
+		When you draw a tree, subtract the x scroll position from the horizontal position of the tree, 
+		and the y scroll position from the vertical position.
+		For example:
+<pre class="code">
+g.drawImage(treeImage, tree.getX() - scrollPosX, tree.getY() - scrollPosY, tree.getW(), tree.getH(), null);
+</pre>
+		Adjust the scroll position value when the user presses the aforementioned keys.
+		You will also need to adjust your mousePressed function to take into consideration the 
+		scroll position instead of just the raw (x,y) data from the mouse.
+		<button type="button" class="collapsible">Future Note...</button>
+		<div class="content">
+		<p>Be aware this is the only assignment we'll use numeric values to control the camera. When we add our character, the arrow keys will control them, and the camera will follow the character. Just something to keep in the back of your mind while programming!</p>
+		</div>
+		</li><br><br>
+
+	<li><b>Read about JSON format</b>.
+		JSON is a text-based format for encoding arbitrary objects.
+		Visit <a href="http://json.org">http://json.org</a> and examine the pictures.
+		If you don't understand them, find a tutorial about JSON and figure out what it is all about.
+		There is a Java class that enables one to load or save in JSON format on the Blackboard site called Json.java.
+		Download it, add it to your project, update your <font color=MediumSeaGreen>build script</font>, and study the example usage in the comments at the top of the file.
+		</li><br><br>
+
+	<li><b>When the user presses 's', save your model to a Json file</b>.
+		You can find "Json.java" on Blackboard - add it to your project, and <b>update your build script</b>.
+		Examine the comments, which include an example of how to use it.
+		Add a "marshal" method to your Tree class that marshals the object into a Json node.
+		Also, add a "marshal" method to your Model class that marshals the object into a Json node.
+		Use the Json.save method to save the Json node to a file named "map.json".
+		</li><br><br>
+
+	<li><b>When the user presses 'l' or 'L', load the model from a Json file</b>.
+		Add an unmarshaling <font color=blue>constructor</font> to your Tree class.
+		Also, add a <font color=blue>method</font> to your Model class that will clear the ArrayList of trees and unmarshal them from Json objects.
+		Use the Json.load method to load the Json node to a file named "map.json".
+		<button type="button" class="collapsible">Alternatively....</button>
+		<div class="content">
+		<p>You <i>could</i> add an unmarshaling constructor to your Model class. However, if you make a new model (this would be the call to a constructor), you will need to tell the other classes about it to reconnect the View and the Controller.
+		A good way to do that is to add setters to the other classes, like this:
+<pre class="code">
+void setModel(Model m)
+{
+	model = m;
+}
+</pre>
+		Please note that you may or may not need this exact setter; it is just meant as an
+		example of what a setter is in Java.
+		<br><br>
+		I would personally recommend just using a setter to clear the ArrayList and then unmarshal from the file.</p>
+		</div>
+		</li><br><br>
+
+	<li><b>Map Requirements and Other Notes.</b>
+		<br><font color="purple">
+			<ul>
+				<li>At least four rooms</li>
+				<li>There must be at least two left-right adjacent rooms</li>
+				<li>There must be at least two up-down adjacent rooms</li>
+				<li>This means you can't just have a straight line of adjacent rooms - 
+				imagine <a href="https://static.wikia.nocookie.net/tetrisconcept/images/c/ca/Tetromino_image.png" target="_blank">tetris puzzle pieces</a>
+				instead (other than the straight line one)</li>
+				<li>When you save your map, there must be trees around the edges of the rooms to indicate the edges of the map and spaces to indicate the doorways</li>
+				<li>You should not be able to scroll past the edges of your map</li>
+				<li>You are welcome to use a different image for your trees, but your code and map should have the same functionality</li>
+				<li>You are also welcome to add additional classes for grass or rocks or whatever other images you may want to add that function the same as trees.</li>
+				<li>You are welcome to add more to the program than what is listed here.  Have fun with the project!  Consider having the rooms "swipe" when moving from side to side
+				instead of just immediately appearing.  Consider having different color schemes in each room.  If you want to add additional graphics that is more similar to castles 
+				in old school 8-bit games, go ahead!  Just make sure that your 'trees' can be added and removed, they snap to the grid, and line the edges of the map</li>
+			</ul></font>
+	</li><br><br>
+
+	<li><b>Active KeyPresses/MousePresses for Assignment 2.</b>
+		<ul>
+			<li>2 - scroll down</li>
+			<li>4 - scroll left</li>
+			<li>6 - scroll right</li>
+			<li>8 - scroll up</li>
+			<li>l or L - load map</li>
+			<li>s or S - save map</li>
+			<li>q or Q - quit program</li>
+			<li>esc - quit program</li>
+			<li>e or E - toggle edit map</li>
+			<ul><li>c or C - clear map (only while in editMode)</li>
+				<li>a or A - add map items (trees)</li>
+				<ul><li>if editing is true and add trees is true (green background), <b>mouse press</b> should add a tree to an empty location</li>
+				</ul>
+				<li>r or R - remove map items (trees)</li>
+				<ul><li>if editing is true and add trees is false (red background), then <b>mouse press</b> should remove a clicked tree</li>
+				</ul>
+			<li>As soon as edit is toggled to true (green background), addMapItems should also be immediately true. Toggle addMapItems to false to remove trees instead. (red background)</li></ul>
+			<ul><li>If edit is false, then mouse press or mouse release (or mouse dragged) should do nothing. The map can still scroll left/right with arrow keys though</li></ul>
+		</ul>
+		<button type="button" class="collapsible">Note...</button>
+		<div class="content">
+		<p>You can add additional functionality to your code, but these are the specific keys that <b>must</b> be coded for your assignment to be graded properly! Make the graders' jobs easy!</p>
+		</div>
+	</li><br><br>
+
+	<li><b>Test your code and submit.</b>
+		Make a zip archive called Assignment2.zip containing ALL of your source files (including map.json), image file(s), and a working build script. 
+		Do not submit any .class files or .jar files. Your build script (build.bash or build.bat only) should build and execute the program (<b>all</b> java files should be explicitly compiled).
+		Test your zip file before you submit it by extracting into a separate folder and running your build script. You should be able to load 
+		your map from the assignment file!
+		Remember to add your name, date, and assignment description at the top of EVERY java file you turn in for every assignment.
+		Finally, go the course web site on Blackboard (<a href="https://learn.uark.edu">https://learn.uark.edu/</a>) and 
+		submit your zip archive for Assignment2 <b><font color=deeppink>AFTER</font></b> reading through the list in step 17 below!
+		</li><br><br>
+
+	<li>Make sure your code meets each of these requirements. Please keep in mind that this is a very large class and the TAs do not have time to fix your code, rename files, etc.:</b>
+		<ol>
+			<li>Single zip file named Assignment2.zip (step 17)</li>
+		<ul><li>Contains exactly 6 java files: 
+			<ol><li>Json.java</li>
+				<li>Game.java</li>
+				<li>Model.java</li>
+				<li>Controller.java</li>
+				<li>View.java</li>
+				<li>Tree.java</li></ol>
+				<li>1 build script (build.bat or build.bash)</li>
+				<li>1 map.json file</li>
+				<li>A folder called images with 1+ image(s) you need</li></ul>
+				<b><font color=deeppink>There should be 8 files in the main folder, plus a folder of images</font></b>
+			<li>Build script <font color=red>explicitly</font> has the correct commands to build ALL files and run the code (steps 5 and 12)</li>
+		<ul><li>Windows (.bat) and Linux (.bash) are different!</li> </ul>
+			<li><b>The code compiles (step 17)</b></li>
+		<ul><li>Do not skip testing! (especially because of the map and images!)</li></ul> 
+			<li>The Java program executes correctly (step 17)</li>
+			<li>Name, the date, and the assignment description is at the top of all files (step 17)</li>
+			<li>Caps lock on the keyboard still gives same functionality? (step 2 hint)</li>
+			<li>Button and ALL turtle functionality are removed or commented out (step 5)</li>
+			<li>Title bar of the window has been updated (step 2)</li>
+			<li>Changing rooms and adding trees still work (step 11)</li>
+			<li>Trees can be added/removed even after changing rooms (step 8 and 11)</li>
+			<li>When your code first loads, you should just have a blank screen. Upon keypress (lowercase L - 'l'), then your map should be loaded.</li>
+		</ol>
+		</li><br><br>
+
+</ol>
+
+<h2>FAQ:</h2>
+<ol>
+
+	<li><b>Q: How does one use a try/catch block?</b><br>
+		A: If you <u>must</u> use a try/catch block, make sure the catch part does not hide any errors.
+		A good way to inform the user about an error is to print a stack trace and terminate the program.
+		(If you don't terminate the program, you might not even notice that something bad happened.)
+		Here is an example of a well-crafted try/catch block:
+<pre class="code">
+try
+{
+	image = ImageIO.read(new File("filename.png"));
+}
+catch(Exception e)
+{
+	e.printStackTrace(System.err);
+	System.exit(1);
+}
+</pre>
+		Here is an example of the wrong way to use a try/catch block:
+<pre class="code">
+try
+{
+	image = ImageIO.read(new File("filename.png"));
+}
+catch(Exception e) {}  <font color="red">// BAD, BAD, BAD!!!!!!</font>
+</pre>
+		Also, it is a good idea to put as little code as you can inside the try section.
+		</li><br><br>
+
+</ol>
+
+
+
+</td></tr></table>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+ coll[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var content = this.nextElementSibling;
+  if (content.style.display === "block") {
+   content.style.display = "none";
+  } else {
+   content.style.display = "block";
+  }
+ });
+}
+</script>
+</body></html>
