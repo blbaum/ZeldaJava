@@ -9,7 +9,6 @@ public class Game extends JFrame
 {
 	private boolean keepGoing;
 
-	private Tree tree;
 	private Model model;
 	private Controller controller;
 	private View view;
@@ -19,12 +18,11 @@ public class Game extends JFrame
 		keepGoing = true;
 		
 		model = new Model();
-		tree = new Tree();
 		controller = new Controller(model);
-		view = new View(controller, model, tree);
+		view = new View(controller, model);
 		
 		this.setTitle("Map Editor - Assignment 2");
-		this.setSize(500, 500);
+		this.setSize(700, 500);
 		this.setFocusable(true);
 		this.getContentPane().add(view);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,6 +30,7 @@ public class Game extends JFrame
 		this.addKeyListener(controller);
 
 		view.addMouseListener(controller);
+		view.addMouseMotionListener(controller);
 	}
 
 	public void run()
@@ -39,7 +38,7 @@ public class Game extends JFrame
 		do
 		{
 			keepGoing = controller.update();
-			model.update(); 
+			// model.update(); 
 			view.repaint(); // calls View.paintComponent indirectly
 			Toolkit.getDefaultToolkit().sync();	// updates the screen
 

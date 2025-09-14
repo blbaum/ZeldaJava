@@ -3,13 +3,15 @@
 // assignment: Turtle Graphics, laying groundwork for Zelda game
 
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.lang.Math;
 
-public class Controller implements ActionListener, MouseListener, KeyListener
+public class Controller implements ActionListener, MouseListener, KeyListener, MouseMotionListener
 {
 	private boolean keepGoing;
 	private View view;
@@ -32,14 +34,14 @@ public class Controller implements ActionListener, MouseListener, KeyListener
 
 	public boolean update()
 	{	
-		if(keyRight)
-			model.moveRight();			
-		if(keyLeft)
-			model.moveLeft();
-		if(keyUp)
-			model.moveUp();			
-		if(keyDown)
-			model.moveDown();
+		// if(keyRight)
+		// 	model.moveRight();			
+		// if(keyLeft)
+		// 	model.moveLeft();
+		// if(keyUp)
+		// 	model.moveUp();			
+		// if(keyDown)
+		// 	model.moveDown();
 
 		//the Controller keeps track of whether or not we have quit the program and
 		//returns this value to the Game engine of whether or not to continue the game loop
@@ -53,9 +55,19 @@ public class Controller implements ActionListener, MouseListener, KeyListener
 
 	public void mousePressed(MouseEvent e)
 	{
-		model.setDestination(e.getX(), e.getY());
+		int x = Math.floorDiv(e.getX(), 50) * 50;
+		int y = Math.floorDiv(e.getY(), 50) * 50;
+		model.addTree( x , y );
 	}
 
+	public void mouseDragged(MouseEvent e)
+	{
+		int x = Math.floorDiv(e.getX(), 50) * 50;
+		int y = Math.floorDiv(e.getY(), 50) * 50;
+		model.addTree( x , y );
+	}
+
+	public void mouseMoved(MouseEvent e){ }
 	public void mouseReleased(MouseEvent e){ }
 	public void mouseEntered(MouseEvent e){ }
 	public void mouseExited(MouseEvent e){ }

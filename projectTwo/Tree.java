@@ -1,20 +1,28 @@
 public class Tree 
 {
-  private int x, y, w, h;
+  private int x, y, width, height;
 
-  public Tree()
+  public Tree(int x, int y)
   {
-    this.x = 50;
-    this.y = 50;
-    this.w = 50;
-    this.h = 50;
+    this.x = x;
+    this.y = y;
+    this.width = 50;
+    this.height = 50;
   }
 
-  public int getTreeX(){
+  public int getX(){
     return this.x;
   }
   
-  public int getTreeY(){
+  public int getY(){
     return this.y;
+  }
+
+  public int getWidth(){
+    return this.width;
+  }
+  
+  public int getHeight(){
+    return this.height;
   }
 }

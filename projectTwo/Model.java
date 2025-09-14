@@ -3,63 +3,70 @@
 // assignment: Map editor assignment
 
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class Model
 {
-	private int turtleX;
-	private int turtleY;
-	private int destX;
-	private int destY;
-	private int turtleSpeed;
+	private ArrayList<Tree> trees;
+	private Tree tree;
 
 	public Model()
 	{
-		turtleSpeed = 4;
+		this.trees = new ArrayList<Tree>();
+	}	
+
+	public Tree getTreesAt(int i)
+	{
+		return this.trees.get(i);
 	}
 
-	public void update()
+	public int getTreesLength()
 	{
-		// Move the turtle
-		if(this.turtleX < this.destX) 
-			this.turtleX += Math.min(turtleSpeed, this.destX - this.turtleX); // right movement
-		else if(this.turtleX > this.destX)
-			this.turtleX -= turtleSpeed; // left movement
-		if(this.turtleY < this.destY) 
-			this.turtleY += Math.min(turtleSpeed, this.destY - this.turtleY); // down movement
-		else if(this.turtleY > this.destY) 
-			this.turtleY -= turtleSpeed; // up movement
+		return this.trees.size();
 	}
 
-	public void setDestination(int x, int y)
+	public void addTree(int x, int y)
 	{
-		this.destX = x;
-		this.destY = y;
+		this.trees.add(new Tree(x, y));
 	}
 	
-	public int getTurtleX()
-	{
-		return this.turtleX;
-	}
+	// public void update()
+	// {
+	// 	// Move the model
+	// 	if(this.ModelX < this.destX) 
+	// 		this.ModelX += Math.min(modelSpeed, this.destX - this.ModelX); // right movement
+	// 	else if(this.ModelX > this.destX)
+	// 		this.ModelX -= modelSpeed; // left movement
+	// 	if(this.modelY < this.destY) 
+	// 		this.modelY += Math.min(modelSpeed, this.destY - this.modelY); // down movement
+	// 	else if(this.modelY > this.destY) 
+	// 		this.modelY -= modelSpeed; // up movement
+	// }
 	
-	public int getTurtleY()
-	{
-		return this.turtleY;
-	}
+	// public int getModelX()
+	// {
+	// 	return this.ModelX;
+	// }
+	
+	// public int getModelY()
+	// {
+	// 	return this.modelY;
+	// }
 
-  public void moveRight(){
-    this.destX += turtleSpeed;
-  }
+  // public void moveRight(){
+  //   this.destX += modelSpeed;
+  // }
 
-  public void moveLeft(){
-    // this.destX = Math.max(0, getTurtleX() - turtleSpeed);
-		this.destX -= turtleSpeed;
-  }
+  // public void moveLeft(){
+  //   // this.destX = Math.max(0, getModelX() - modelSpeed);
+	// 	this.destX -= modelSpeed;
+  // }
 
-  public void moveUp(){
-    this.destY -= turtleSpeed;
-  }
+  // public void moveUp(){
+  //   this.destY -= modelSpeed;
+  // }
 
-  public void moveDown(){
-    this.destY += turtleSpeed; 
-  }
+  // public void moveDown(){
+  //   this.destY += modelSpeed; 
+  // }
 }

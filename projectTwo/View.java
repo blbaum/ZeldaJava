@@ -14,15 +14,12 @@ import java.awt.Color;
 public class View extends JPanel
 {
 	private JButton b1;
-	private BufferedImage turtle_image;
 	private BufferedImage tree_image;
 	private Model model;
-	private Tree tree;
 
-	public View(Controller c, Model m, Tree t)
+	public View(Controller c, Model m)
 	{
 		model = m;
-		tree = t;
 
 		c.setView(this); // sets object that view references
 
@@ -41,6 +38,10 @@ public class View extends JPanel
 	{
 		g.setColor(new Color(51,115,87));
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(this.tree_image, tree.getTreeX(), tree.getTreeY(), null);
+
+		for(int i = 0; i < model.getTreesLength(); i++){
+			Tree tree = model.getTreesAt(i);
+			g.drawImage(this.tree_image, tree.getX()-tree.getWidth()/2, tree.getY()-tree.getHeight()/2, tree.getWidth(), tree.getHeight(), null);
+		}
 	}
 }
