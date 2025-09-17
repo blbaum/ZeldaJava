@@ -8,16 +8,14 @@ import java.util.ArrayList;
 public class Model
 {
 	private ArrayList<Tree> trees;
-	private Tree tree;
 
 	public Model()
 	{
 		this.trees = new ArrayList<Tree>();
 	}	
 
-	public Tree getTreesAt(int i)
-	{
-		return this.trees.get(i);
+	public Tree getTreeAt(int index){
+		return trees.get(index);
 	}
 
 	public int getTreesLength()
@@ -25,11 +23,50 @@ public class Model
 		return this.trees.size();
 	}
 
-	public void addTree(int x, int y)
+	public void addTree(int mouseX, int mouseY)
 	{
-		this.trees.add(new Tree(x, y));
+		for(int i = 0; i < trees.size(); i++)
+		{
+			if(trees.get(i).treeClicked(mouseX, mouseY)){
+				return;
+			}
+		}
+		this.trees.add(new Tree(mouseX, mouseY));
+	}
+
+	public void removeTree(int mouseX, int mouseY)
+	{
+		for(int i = 0; i < trees.size(); i++)
+		{
+			if(trees.get(i).treeClicked(mouseX, mouseY)){
+				trees.remove(i);
+				return;
+			}
+		}
+	}
+
+	public void clear(){
+		this.trees.clear();
 	}
 	
+	public Json marshal(){
+		Json ob = Json.newObject();
+		Json treeList = Json.newList();
+		ob.add("trees", treeList);
+		for(int i = 0; i < trees.size(); i++){
+			treeList.add(trees.get(i).marshal());
+		}
+		return ob;
+	}
+
+	public void unmarshal(Json ob){
+		trees = new ArrayList<Tree>();
+		Json treeList = ob.get("trees");
+		for(int i = 0; i < treeList.size(); i++){
+			trees.add(new Tree(treeList.get(i)));
+		}
+	}
+
 	// public void update()
 	// {
 	// 	// Move the model

@@ -19,9 +19,9 @@ import java.nio.file.Files;
 //     private double depth;
 //     private Periscope peri;
 //     private ArrayList<Torpedo> ammo;
-//
-//
-//     // Unmarshaling constructor
+
+
+		// Unmarshaling constructor
 //     public Submarine(Json ob)
 //     {
 //         atomic = ob.getBool("atomic");
@@ -33,8 +33,8 @@ import java.nio.file.Files;
 //         for(int i = 0; i < tmpList.size(); i++)
 //             ammo.add(new Torpedo(tmpList.get(i)));
 //     }
-//
-//
+
+
 //     // Marshals this object into a JSON DOM
 //     public Json marshal()
 //     {

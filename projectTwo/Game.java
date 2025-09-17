@@ -30,7 +30,7 @@ public class Game extends JFrame
 		this.addKeyListener(controller);
 
 		view.addMouseListener(controller);
-		view.addMouseMotionListener(controller);
+		view.addMouseMotionListener(controller); 
 	}
 
 	public void run()
@@ -55,8 +55,16 @@ public class Game extends JFrame
 		} while(keepGoing == true);
 	}
 
+	static void testModelMarshel(){
+		Model m = new Model();
+		// m.trees.add(new Tree(100,150));
+		Json j = m.marshal();
+		j.save("testmodel.json");
+	}
+
 	public static void main(String[] args)
 	{
+		// testModelMarshel();
 		Game g = new Game();
 		g.run();
 	}

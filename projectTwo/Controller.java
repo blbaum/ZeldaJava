@@ -20,17 +20,24 @@ public class Controller implements ActionListener, MouseListener, KeyListener, M
 	private boolean keyRight;
 	private boolean keyUp;
 	private boolean keyDown;
-	
+	private static boolean isEditing;
+	private static boolean isAdding;
+	private boolean isRemoving;
+	private String filename;
+
 	public Controller(Model m)
 	{
 		model = m;
 		keepGoing = true;
+		filename = "map.json";
 	}
 
-	public void actionPerformed(ActionEvent e)
+	public void setView(View v)
 	{
+		view = v;
+	}
 
- 	}
+	public void actionPerformed(ActionEvent e) { 	}
 
 	public boolean update()
 	{	
@@ -48,30 +55,33 @@ public class Controller implements ActionListener, MouseListener, KeyListener, M
 		return keepGoing;
 	}
 
-	public void setView(View v)
-	{
-		view = v;
-	}
-
 	public void mousePressed(MouseEvent e)
 	{
-		int x = Math.floorDiv(e.getX(), 50) * 50;
-		int y = Math.floorDiv(e.getY(), 50) * 50;
-		model.addTree( x , y );
+		if(isEditing){
+			int mouseX = (Math.floorDiv(e.getX(), 50) * 50) + view.getScrollPosX();
+			int mouseY = (Math.floorDiv(e.getY(), 50) * 50) + view.getScrollPosY();
+			if(isAdding){
+					model.addTree(mouseX, mouseY);
+			}
+			if(!isAdding){
+					model.removeTree(mouseX, mouseY);
+			}
+		}
 	}
 
 	public void mouseDragged(MouseEvent e)
 	{
-		int x = Math.floorDiv(e.getX(), 50) * 50;
-		int y = Math.floorDiv(e.getY(), 50) * 50;
-		model.addTree( x , y );
+		if(isEditing){
+			int mouseX = (Math.floorDiv(e.getX(), 50) * 50) + view.getScrollPosX();
+			int mouseY = (Math.floorDiv(e.getY(), 50) * 50) + view.getScrollPosY();
+			if(isAdding){
+					model.addTree(mouseX, mouseY);
+			}
+			if(!isAdding){
+					model.removeTree(mouseX, mouseY);
+			}
+		}
 	}
-
-	public void mouseMoved(MouseEvent e){ }
-	public void mouseReleased(MouseEvent e){ }
-	public void mouseEntered(MouseEvent e){ }
-	public void mouseExited(MouseEvent e){ }
-	public void mouseClicked(MouseEvent e){ }
 
 	public void keyPressed(KeyEvent e)
 	{
@@ -112,7 +122,43 @@ public class Controller implements ActionListener, MouseListener, KeyListener, M
 		}
 		char c = Character.toLowerCase(e.getKeyChar());
 		if(c == 'q') System.exit(0);
+		if(c == 'e'){
+			isEditing = !isEditing;	
+			isAdding = true;
+		}
+		if(c == 'a') isAdding = true;
+		if(c == 'r') isAdding = false;
+		if(c == 'c' && isEditing)	model.clear();
+		if(c == '4') view.setScrollPosX(-700); // left
+		if(c == '6') view.setScrollPosX(700); // right
+		if(c == '8') view.setScrollPosY(-500); // up
+		if(c == '2') view.setScrollPosY(500); // down
+		if(c == 'l') {
+			Json loadObject = Json.load(filename);
+			model.unmarshal(loadObject);
+			System.out.println("File " + filename + " loaded!");
+		}
+		if(c == 's') {
+			model.marshal().save(filename);
+			System.out.println("Saved file: " + filename + "!");
+		}
 	}
 
+	public static boolean isEditing(){
+		return isEditing;
+	}
+	
+	public static boolean isAdding(){
+		return isAdding;
+	}
+
+	// need to be included
 	public void keyTyped(KeyEvent e) { }
+	public void mouseMoved(MouseEvent e){
+		//  System.out.println(e.getX()+", "+e.getY());
+	} 
+	public void mouseReleased(MouseEvent e){ }
+	public void mouseEntered(MouseEvent e){ }
+	public void mouseExited(MouseEvent e){ }
+	public void mouseClicked(MouseEvent e){ }
 }
