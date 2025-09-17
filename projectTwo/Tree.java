@@ -1,3 +1,7 @@
+// author: Bryant Baum
+// date: 9/12/2025
+// assignment: Map editor assignment
+
 public class Tree 
 {
   private int x, y, width, height;

@@ -1,6 +1,6 @@
 // author: Bryant Baum
-// date: 8/26/2025
-// assignment: Turtle Graphics, laying groundwork for Zelda game
+// date: 9/12/2025
+// assignment: Map editor assignment
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
