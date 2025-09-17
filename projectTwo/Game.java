@@ -59,7 +59,8 @@ public class Game extends JFrame
 		Model m = new Model();
 		// m.trees.add(new Tree(100,150));
 		Json j = m.marshal();
-		j.save("testmodel.json");
+		j.save("map.json");
+		j.load("map.json");
 	}
 
 	public static void main(String[] args)

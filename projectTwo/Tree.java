@@ -11,8 +11,8 @@ public class Tree
   }
 
   public Tree(Json ob){
-    this.x = (int)ob.getLong(x);
-    this.y = (int)ob.getLong(y);
+    this.x = (int)ob.getLong("x");
+    this.y = (int)ob.getLong("y");
     this.width = 50;
     this.height = 50;
   } 

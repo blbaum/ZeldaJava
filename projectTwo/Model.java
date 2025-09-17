@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class Model
 {
-	private ArrayList<Tree> trees;
+	public ArrayList<Tree> trees;
 
 	public Model()
 	{
-		this.trees = new ArrayList<Tree>();
+		trees = new ArrayList<Tree>();
 	}	
 
 	public Tree getTreeAt(int index){
@@ -60,7 +60,7 @@ public class Model
 	}
 
 	public void unmarshal(Json ob){
-		trees = new ArrayList<Tree>();
+		clear();
 		Json treeList = ob.get("trees");
 		for(int i = 0; i < treeList.size(); i++){
 			trees.add(new Tree(treeList.get(i)));
